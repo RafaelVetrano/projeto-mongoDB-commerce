@@ -2,17 +2,14 @@ use('commerce');
 // db.produtos.find({ingredientes: {$ne: 'ketchup'}});
 
 db.produtos.updateMany(
+    {},
     {
-        $and:[
-        {ingredientes: {$ne: 'ketchup'}},
-        {nome: {$ne: 'McChicken'}}
-        ]
-    },
-    {
-        $push: {
-            ingredientes: 'ketchup'
+        $set: {
+            criadoPor: 'Ronald McDonald'
         }
     }
 )
 
 db.produtos.find({}, {_id: 0, nome: 1, ingredientes: 1});
+
+// db.produtos.find({})
