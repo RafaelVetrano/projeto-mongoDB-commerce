@@ -1,2 +1,2 @@
 use('commerce')
-db.produtos.find({ curtidas: { $gt: 10, $lt: 100 } }, { nome: 1, curtidas: 1, _id: 0 })
+db.produtos.find({ vendidos: {$ne: 50},tags: {$exists: false}  }, { nome: 1, vendidos: 1, _id: 0 })
