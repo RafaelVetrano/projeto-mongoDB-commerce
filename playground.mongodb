@@ -1,11 +1,46 @@
 use('commerce');
-// db.produtos.find({});
+// db.produtos.find({nome: 'Quarteirão com Queijo'});
 
-db.produtos.find(
-    {ingredientes: {$elemMatch: {$eq: 'picles'}}},
+db.produtos.updateMany(
+    {},
     {
-        _id: 0,
-        ingredientes: 1,
-        valoresNutricionais:{ $slice: 3 },
-    }
-)
+        $set: {
+            avaliacao: NumberInt(0),
+        },
+    },
+);
+
+db.produtos.updateMany(
+    { 
+        tags: { $elemMatch: { $eq: "bovino" } }
+     },
+    {
+        $inc: {
+            avaliacao: 5,
+        },
+    },
+);
+
+// db.produtos.updateMany(
+//     { 
+//         $or: [
+//             { tags: { $elemMatch: { $eq: "bovino" } } },
+//             { ingredientes: { $elemMatch: { $eq: "hamburguer" } } },
+//         ],
+//      },
+//     {
+//         $inc: {
+//             avaliacao: 5,
+//         },
+//     },
+// );
+
+db.produtos.updateMany(
+    { tags: { $elemMatch: { $eq: "ave" } } },
+    {
+        $inc: {
+            avaliacao: 3,
+        },
+    },
+);
+db.produtos.find({}, { _id: 0, nome: 1, avaliacao: 1 });
