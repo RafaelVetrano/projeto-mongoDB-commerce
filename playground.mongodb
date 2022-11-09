@@ -1,15 +1,11 @@
 use('commerce');
-// db.produtos.find({ingredientes: {$ne: 'ketchup'}});
+// db.produtos.find({});
 
-db.produtos.updateMany(
-    {},
+db.produtos.find(
+    {ingredientes: {$elemMatch: {$eq: 'picles'}}},
     {
-        $set: {
-            criadoPor: 'Ronald McDonald'
-        }
+        _id: 0,
+        ingredientes: 1,
+        valoresNutricionais:{ $slice: 3 },
     }
 )
-
-db.produtos.find({}, {_id: 0, nome: 1, ingredientes: 1});
-
-// db.produtos.find({})
