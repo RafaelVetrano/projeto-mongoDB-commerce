@@ -1,32 +1,12 @@
 use('commerce');
 // db.produtos.find({nome: 'Quarteirão com Queijo'});
 
-db.produtos.updateMany(
-    {},
+db.produtos.updateOne(
+    {nome: 'Big Mac'},
     {
-        $set: {
-            avaliacao: NumberInt(0),
-        },
-    },
-);
+        $currentDate: { ultimaModificacao: true }
+    }
+)
 
-db.produtos.updateMany(
-    { 
-        tags: { $elemMatch: { $eq: "bovino" } }
-     },
-    {
-        $inc: {
-            avaliacao: 5,
-        },
-    },
-);
 
-db.produtos.updateMany(
-    { tags: { $elemMatch: { $eq: "ave" } } },
-    {
-        $inc: {
-            avaliacao: 3,
-        },
-    },
-);
-db.produtos.find({}, { _id: 0, nome: 1, avaliacao: 1 });
+db.produtos.find({nome: 'Big Mac'}, { _id: 0, nome: 1});
