@@ -1,0 +1,1 @@
+db.produtos.find({ "valoresNutricionais.3.percentual": { $gte: 25 } }, { _id: 0, nome: 1 });
