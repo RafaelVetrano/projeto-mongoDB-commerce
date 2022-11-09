@@ -21,20 +21,6 @@ db.produtos.updateMany(
     },
 );
 
-// db.produtos.updateMany(
-//     { 
-//         $or: [
-//             { tags: { $elemMatch: { $eq: "bovino" } } },
-//             { ingredientes: { $elemMatch: { $eq: "hamburguer" } } },
-//         ],
-//      },
-//     {
-//         $inc: {
-//             avaliacao: 5,
-//         },
-//     },
-// );
-
 db.produtos.updateMany(
     { tags: { $elemMatch: { $eq: "ave" } } },
     {
